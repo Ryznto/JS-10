@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+body {
+    background-image: url(wallhaven-wekzvp.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(2px);
+}
+
+.title {
+    font-size: 25px;
+}
+
+#timer {
+    font-size: 40px;
+}
+button {
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    transition: 0.5s;
+}
+
+button:hover {
+    background: black;
+    color: white;
+    transition: 0.5s;
+}

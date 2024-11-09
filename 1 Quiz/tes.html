@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Quiz App</title>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2>Quiz</h2>
+        <p id="question">Pertanyaan 1: Apa warna langit?</p>
+        <input type="text" id="answerInput" placeholder="Ketik jawaban Anda">
+        <button onclick="checkAnswer()">Cek Jawaban</button>
+        <p id="result"></p>
+        <p>Skor: <span id="score">0</span></p>
+    </div>
+
+    <script>
+        let questions = [
+            "apa hukum mencuri dalam islam?",
+            "pada tanggal berapa dan tahun berapa indonesia merdeka?",
+            "Apa arti singkatan dari IKN?",
+            "Siapakah presiden pertama Indonesia?",
+            "Berapa hasil dari 110 + 10?"
+        ];
+
+        let correctAnswers = [
+            "haram",
+            "17 agustus 1945",
+            "Ibu kota nusantara",
+            "Soekarno",
+            "120"
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            document.getElementById("question").innerHTML = "Pertanyaan " + (currentQuestion + 1) + ": " + questions[currentQuestion];
+        }
+
+        function checkAnswer() {
+            let jawabanBenar = correctAnswers[currentQuestion];
+            let jawabanUser = document.getElementById("answerInput").value.toLowerCase();
+
+            if (jawabanUser === jawabanBenar) {
+                document.getElementById("result").innerHTML = "Jawaban Anda benar!";
+                score++;
+            } else {
+                document.getElementById("result").innerHTML = "Jawaban Anda salah. Coba lagi.";
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+                document.getElementById("answerInput").value = "";
+                document.getElementById("score").innerHTML = score;
+            } else {
+                document.getElementById("question").innerHTML = "Kuis Selesai!";
+                document.getElementById("answerInput").style.display = "none";
+                document.getElementById("result").style.display = "none";
+                document.getElementById("score").innerHTML = score + " dari " + questions.length + " benar!";
+                document.getElementById("score").style.fontWeight = "bold";
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
